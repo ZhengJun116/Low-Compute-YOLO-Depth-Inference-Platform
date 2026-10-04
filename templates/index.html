@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoloaSAM Tactical Visualizer</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="panel">
+                <div class="panel-header">
+                    <span>&#9672; FEED SOURCE</span>
+                    <span class="panel-num">01</span>
+                </div>
+                <div class="form-group">
+                    <label>SENSOR FEED</label>
+                    <div class="upload-box" id="drop-area">
+                        <span>Drag & Drop File Here<br>or Click to Upload</span>
+                        <input type="file" id="file-input" style="display:none;" accept="image/*,video/*">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>HISTORY ARCHIVE</label>
+                    <select id="history-select" class="tactical-input">
+                        <option value="">-- Select Previous Target --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>TRACK MODE</label>
+                    <select class="tactical-input">
+                        <option>YOLO11s + Depth Anything V2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span>&#9672; SENSOR TUNING</span>
+                    <span class="panel-num">02</span>
+                </div>
+                <div class="tuning-grid" style="display:block;">
+                    <div class="slider-group">
+                        <label>CONFIDENCE (i): <span id="conf-val">0.25</span></label>
+                        <input type="range" id="conf-input" class="tactical-slider" min="0.01" max="1.0" step="0.01" value="0.25" style="width: 100%;">
+                    </div>
+                    <div class="slider-group" style="margin-top:15px;">
+                        <label>IOU (i): <span id="iou-val">0.45</span></label>
+                        <input type="range" id="iou-input" class="tactical-slider" min="0.01" max="1.0" step="0.01" value="0.45" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-start" id="btn-start">&#9654; START / INFER</button>
+                    <button class="btn btn-stop" id="btn-stop">&#9724; PAUSE</button>
+                    <button class="btn btn-switch" id="btn-switch">&#8644; SWITCH VIEW (ORG/INF)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="feed-viewer">
+                <div class="feed-overlay">FEED: NO SIGNAL</div>
+                <div id="media-container" class="media-container">
+                    <!-- Media will be injected here -->
+                </div>
+                <div class="feed-status">
+                    <span class="status-dot"></span> <span id="feed-status-text">STANDBY</span>
+                </div>
+                <div id="loading-overlay" class="loading-overlay" style="display: none;">
+                    <div class="spinner"></div>
+                    <div style="margin-top: 15px;">PROCESSING INFERENCE...</div>
+                </div>
+            </div>
+
+            <div class="contacts-panel">
+                <div class="panel-header">
+                    <span>&#9672; ACTIVE CONTACTS (YOLO BBOX & DEPTH)</span>
+                </div>
+                <table class="tactical-table">
+                    <thead>
+                        <tr>
+                            <th>TRACK</th>
+                            <th>CLASS / CONF</th>
+                            <th>STATUS</th>
+                            <th>POSITION (X,Y)</th>
+                            <th>SIZE (W,H)</th>
+                            <th>DISTANCE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contacts-body">
+                        <!-- Contacts injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

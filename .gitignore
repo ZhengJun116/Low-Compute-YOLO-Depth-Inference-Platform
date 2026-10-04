@@ -1,0 +1,31 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large model weights and binary files (Generate using scripts/export_openvino.py)
+*.pt
+*.bin
+*.onnx
+*.engine
+weights/**/*.bin
+weights/**/*.pt
+!weights/**/.keep
+
+# Temporary / runtime generated files
+uploads/*
+!uploads/.keep
+output/*
+!output/.keep
+data_store/*
+!data_store/.keep
+logs/*
+!logs/.keep
+
+# OS / Editor temporary files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.Zone.Identifier
+.vscode/
+.idea/
