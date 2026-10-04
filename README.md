@@ -1,10 +1,14 @@
-# YOLO & Depth Anything 3D Inference Platform
+# Low-Compute YOLO Depth Inference Platform (低算力 YOLO 深度推論平台)
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
-[![OpenVINO](https://img.shields.io/badge/Inference-OpenVINO-orange.svg)](https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html)
+[![OpenVINO](https://img.shields.io/badge/Inference-OpenVINO_Low_Compute-orange.svg)](https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html)
 [![FastAPI](https://img.shields.io/badge/Web-FastAPI-green.svg)](https://fastapi.tiangolo.com/)
 
-本專案為高效能的電腦視覺多模態推論平台，結合 **YOLOv11 2D 物件偵測** 與 **Depth Anything V2 單眼深度估計**，透過相機內參模型將 2D 偵測框與深度圖融合成 3D 空間邊界框並計算物體真實距離。全模組透過 **OpenVINO** 加速 CPU 端推論，並提供直觀易用的 **FastAPI 互動式 Web 介面** 與命令列批次處理工具。
+<p align="center">
+  <img src="assets/demo.png" alt="Platform Web UI Preview" width="100%">
+</p>
+
+本專案為針對**低算力環境（邊緣運算 / CPU 平台）**高度最佳化的多模態視覺推論平台。結合 **YOLOv11 2D 物件偵測** 與 **Depth Anything V2 單眼深度估計**，透過相機幾何模型將 2D 偵測框與深度資訊即時融合成 3D 空間目標並換算物理距離。全平台基於 **OpenVINO** 進行模型量化與低算力 CPU 推論加速，並配備賽博龐克風格的 **FastAPI 互動式 Web 操作介面** 與命令列批次處理工具。
 
 ---
 
@@ -34,7 +38,9 @@
 ## 專案目錄結構
 
 ```text
-YOLO_Inference_Platform/
+Low-Compute-YOLO-Depth-Inference-Platform/
+├── assets/                 # 視覺預覽與展示圖片
+│   └── demo.png            # Web 平台推論介面展示圖
 ├── config/                 # 組態設定檔目錄
 ├── data_store/             # Web 平台歷史紀錄儲存區
 ├── output/                 # 推論結果輸出目錄 (圖片/影片)
